@@ -1,5 +1,5 @@
 name: Secret Share
-version: "1.0.0"
+version: "1.0.1"
 slug: secret_share
 description: Kurzlebiges Teilen von Text und Passwoertern im LAN - Inhalt lebt nur im RAM
 # Auf welchen Prozessor-Typen das Add-on gebaut werden darf.

@@ -1,13 +1,8 @@
-# BUILD_FROM wird vom HA-Supervisor je nach Prozessor-Typ automatisch gesetzt
-# (das passende Alpine-Basis-Image). Deshalb kein fester FROM-Wert.
-ARG BUILD_FROM
-FROM ${BUILD_FROM}
+# Festes, oeffentliches Python-Basis-Image - kein BUILD_FROM noetig,
+# baut auf amd64 (N100) genauso wie auf aarch64 (HA Green) gleich.
+FROM python:3-alpine
 
-# Python aus dem Alpine-Paketmanager - kein pip, keine Fremdpakete.
-RUN apk add --no-cache python3
-
-COPY run.sh /
 COPY share.py /
-RUN chmod a+x /run.sh
 
-CMD [ "/run.sh" ]
+# Direkt starten - kein bashio/s6 noetig fuer diesen Mini-Dienst.
+CMD [ "python3", "/share.py" ]
